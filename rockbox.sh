@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # startup
-MSD_SIZE=32
+MSD_SIZE=16
 SRC=/mnt/Datavault/Audio
 if [ ! -d "${SRC}" ]; then
   echo "fatal: source directory not found"
