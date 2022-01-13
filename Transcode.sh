@@ -1,3 +1,34 @@
+# oculus side-by-side-by-s
+for FILE in *.mp4; do
+  ffmpeg -i ${FILE} -i ${FILE} -filter_complex hstack -c:v libx264 _a_${FILE}
+  ffmpeg -i _a_${FILE} -vf scale=1280:720 _b_${FILE}
+  rm _a_${FILE};
+done
+
+# 2021 youtube playlist ripper bash blurb second version
+PLAYLISTS=(
+  "LINK" "ALBUM" "ARTIST"
+)
+for ((i = 0 ; i < ${#PLAYLISTS[@]} ; i+=3)); do
+  mkdir -p /mnt/c/Users/byteframe/Desktop/"${PLAYLISTS[i+2]}"/"${PLAYLISTS[i+2]} ${PLAYLISTS[i+1]}"
+  cd /mnt/c/Users/byteframe/Desktop/"${PLAYLISTS[i+2]}"/"${PLAYLISTS[i+2]} ${PLAYLISTS[i+1]}"
+  youtube-dl --audio-format=mp3 -x "${PLAYLISTS[i]}"
+  echo
+  sleep 90
+done
+
+# 2021 youtube playlist ripper bash blurb first version
+ARTIST="__XXX"
+mkdir -p /mnt/c/Users/byteframe/Desktop/"${ARTIST}" ; cd /mnt/c/Users/byteframe/Desktop/"${ARTIST}"
+ALBUMS=(
+  "https://www.youtube.com/playlist?list=qwertyuiop1234567890" "Album Name"
+)
+for ((i = 0 ; i < ${#ALBUMS[@]} ; i+=2)); do
+  mkdir -p "${ARTIST} ${ALBUMS[i+1]}" ; cd "${ARTIST} ${ALBUMS[i+1]}"
+  youtube-dl --audio-format=mp3 -x "${ALBUMS[i]}"
+  cd .. ; sleep 60
+done
+
 # merge mp3 files
 cat ${FILES} > out.mp3
 
