@@ -1,8 +1,10 @@
 # oculus side-by-side-by-s
 for FILE in *.mp4; do
-  ffmpeg -i ${FILE} -i ${FILE} -filter_complex hstack -c:v libx264 _a_${FILE}
-  ffmpeg -i _a_${FILE} -vf scale=1280:720 _b_${FILE}
-  rm _a_${FILE};
+  if [ ! -e _b_${FILE} ]; then
+    ffmpeg -i ${FILE} -i ${FILE} -filter_complex hstack -c:v libx264 _a_${FILE}
+    ffmpeg -i _a_${FILE} -vf scale=1280:720 _b_${FILE}
+    rm _a_${FILE};
+  fi
 done
 
 # 2021 youtube playlist ripper bash blurb second version
@@ -111,4 +113,12 @@ for i in *; do
       fi
     fi
   done
+done
+
+# checked youtube handbrake filesizes
+cd /mnt/c/Users/byteframe/Videos
+for FILE in *.*; do
+  if [ $(wc -c < "${FILE}") -ge $(wc -c < /mnt/v/AAA_YTB-0_3150/"${FILE%.*}".*) ]; then
+    echo "${FILE} IS LARGER"
+  fi
 done
