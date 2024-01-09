@@ -1,3 +1,5 @@
 {
+    "keyint_sec": 2,
+    "profile": "high",
     "rate_control": "CBR"
 }

@@ -1,9 +1,1 @@
-{
-    "settings": {
-        "bwtest": false,
-        "key": "steam_89734501_df23e7d24cc875a6\n",
-        "server": "rtmp://ingest-04-iad1.broadcast.steamcontent.com/app\n",
-        "use_auth": false
-    },
-    "type": "rtmp_custom"
-}
+{"settings":{"bwtest":false,"key":"","server":"rtmp://washington.restream.io/live","service":"Restream.io"},"type":"rtmp_common"}
